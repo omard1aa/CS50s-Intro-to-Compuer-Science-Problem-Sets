@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+
 string encrypt(string plaintext, int key);
 
 int main(int argc, string argv[])
@@ -29,6 +30,7 @@ int main(int argc, string argv[])
         printf("ciphertext: %s\n", ciphertext);
     
 }
+
 
 string encrypt(string plaintext, int key){
     string ciphertext = "";
