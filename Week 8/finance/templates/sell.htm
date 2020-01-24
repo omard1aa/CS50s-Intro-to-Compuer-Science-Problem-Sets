@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <form action="/sell", method="POST">
+            <select class="custom-select mb-sm-2 col-sm-4" id="inlineFormCustomSelect">
+                <option selected disabled>Symbol</option>
+                {% for i in range(5)%}
+                    <option value={{i}}>{{i}}- One</option>
+                {% endfor %}
+            </select><br>
+            <button class="form-control btn btn-primary" type="submit">Sell</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

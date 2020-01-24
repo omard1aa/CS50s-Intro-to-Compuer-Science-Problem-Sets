@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block main %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+               <th>Symbol</th>
+               <th>Shares</th> 
+               <th>Price</th> 
+               <th>Transacted</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(length) %}
+                <tr>
+                    <td>{{rows[i]["symbol"]}}</td>
+                    <td>{{rows[i]["shares"]}}</td>
+                    <td>${{rows[i]["price"]}}</td>
+                    <td><small><strong>{{rows[i]["date"]}}</strong></small></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
