@@ -11,4 +11,4 @@
 **Finance Project**
 > They provided me with a template that has been structured in a good way with jinja template, error handling and non-implemented functions to facilitate the completion of tasks.
 
->I implemented `Register`,`Login`,`Quote`,`Buy`, `Sell`, and `History` methods.
+>I implemented `Register`, `Login`, `Quote`, `Buy`, `Sell`, and `History` methods.
