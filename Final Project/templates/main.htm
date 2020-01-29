@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block profile %}
+{{name}}
+{% endblock %}
+{% block main%}
+<div class="container">
+  <div class="row align-items-center">
+    <div>
+        <table class="table table-borderless">
+          <tr>
+            <td>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#q">
+                Ask a new Question
+              </button>
+            </td>
+          </tr>
+        </table>
+    </div>
+
+    <!-- Question form in a modal -->
+    <div class="modal fade" id="q" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="q">Question</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="/question" method="POST">
+            <div class="modal-body form-group">
+              <textarea class="form-control mb-3" name="question" placeholder="Enter your question"></textarea>
+              <select name="genre" class="form-control mb-3">
+                <option selected disabled>Choose subject</option>
+                <option value="math">Math</option>
+                <option value="physics">Physics</option>
+                <option value="chemistery">Chemistery</option>
+                <option value="Biology">Biology</option>
+              </select>
+              <select name="acyear" class="form-control">
+                <option selected disabled>Academic period</option>
+                <option value="primary">Primary School</option>
+                <option value="preparatory">Preparatory School</option>
+                <option value="secondary">Secondary School</option>
+              </select>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Shoutout</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-borderless">
+              <thead>
+              </thead>
+              <tbody>
+                {% for i in range(q_length) %}
+
+                <!--QUESTIONS AND A FORM TO SUBMIT A NEW ANSWER-->
+                  <tr>
+                    <td><h4>{{questions[i]["question"]}}<h4></td>
+                    <td><strong>{{questions[i]["Author"]}} <small>{{questions[i]["date"]}}</small></strong></td>
+                    <form action="{{url_for('insert_answer', qid=questions[i]['id'])}}" method="post">
+                      <td>
+                        <textarea class="form-control" type="text" name="answer" placeholder="Answer this question"></textarea>
+                      </td>
+                      <td>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                      </td>
+                    </form>
+                  </tr>
+
+                  <!-- ANSWERS STYLED INSIDE A TABLE WITH AN UN-ORDERED LIST -->
+                  <tr>
+                    <td colspan="4">
+                      <ul>
+                        {% for j in range(a_length) %}
+                          {% if answers[j]["questionid"] == questions[i]["id"] %}
+                           {% if name == questions[i]["Author"] %}
+                            <li>
+                            {% if answers[j]["verified"] == 1%}
+                              <p>
+                                {{answers[j]["answer"]}} <span class="badge badge-success"> This answer helped me &#10004;</span> </a>
+                              </p>
+                              {% else %}
+                              <p>
+                                {{answers[j]["answer"]}} <a href="{{url_for('verify_answer', aid=answers[j]['id'])}}"><small>Verify this answer!</small></a>
+                              </p>
+                              {% endif %}
+                            </p>
+                          </li>
+                          {% else %}
+                            <li>
+                              {% if answers[j]["verified"] == 1%}
+                                <p>
+                                  {{answers[j]["answer"]}} <span class="badge badge-success"> This answer helped me &#10004;</span> <span></span> </a>
+                                </p>
+                              {% else %}
+                                <p>
+                                  {{answers[j]["answer"]}}
+                                </p>
+                                {% endif %}
+                            </li>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                      </ul>
+                  </td>
+                  </tr>
+                  <tr><td></td></tr>
+                {% endfor %}
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+$('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
+{% endblock %}

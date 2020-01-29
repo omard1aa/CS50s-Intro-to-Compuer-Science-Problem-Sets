@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="row">
+  <div class="col-sm-12">
+    <form action="{{url_for('searchby')}}" method="post">
+      <div class="row">
+          <div class="col-sm-4">
+            <select name="subject" class="form-control mb-3">
+              <option selected disabled>Subject</option>
+              <option value="math">Math</option>
+              <option value="physics">Physics</option>
+              <option value="chemistry">Chemistry</option>
+              <option value="biology">Biology</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <select name="acyear" class="form-control mb-3">
+              <option selected disabled>Academic period</option>
+              <option value="primary">Primary School</option>
+              <option value="preparatory">Preparatory School</option>
+              <option value="secondary">Secondary School</option>
+            </select>
+          </div>
+          <div class="col-sm-4">
+            <button class="btn btn-primary mb-3" type="submit">Search By</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <table class="table table-borderless">
+      <tbody>
+      {% for i in range(length) %}
+        <tr>
+          <td><h3>{{questions[i]["question"]}}</h3> <span class="badge badge-warning">{{questions[i]["genre"]}}</span>
+              <span class="badge badge-primary">{{questions[i]["academicyear"]}}</span>
+              <a href="{{url_for('get_question', id=questions[i]["id"])}}">View this question</a></td>
+          <td><small><strong>{{questions[i]["Author"]}}, {{questions[i]["date"]}}</strong></small></td>
+        </tr>
+        <tr><td>
+        {% endfor %}
+        </tbody>
+    </table>
+  </div>
+{% endblock %}

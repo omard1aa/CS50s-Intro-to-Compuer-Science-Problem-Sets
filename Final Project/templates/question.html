@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block main %}
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-borderless">
+      <tbody>
+        <!--QUESTIONS AND A FORM TO SUBMIT A NEW ANSWER-->
+        <tr>
+          <td><h4>{{question["question"]}}<h4></td>
+          <td><strong>{{question["Author"]}} <small>{{question["date"]}}</small></strong></td>
+          <form action="{{url_for('insert_answer', qid=question['id'])}}" method="post">
+            <td>
+              <textarea class="form-control" type="text" name="answer" placeholder="Answer this question"></textarea>
+            </td>
+            <td>
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </td>
+          </form>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

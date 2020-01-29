@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<div class="row">
+    <div class="col-sm-3">
+        <table class="table table-borderless">
+            <thead>
+                <th>Name</th>
+                <td>{{profile["username"]}}</td>
+            </thead>
+            <thead>
+                <th>Questions</th>
+                <td>{{n}}</td>
+            </thead>
+            <thead>
+                <th>Academic Year</th>
+                <td>{{profile["academicyear"]}}</td>
+            </thead>
+            <thead>
+                <th>Email</th>
+                <td>{{profile["email"]}}</td>
+            </thead>
+        </table>
+    </div>
+</div>
+{% endblock %}
