@@ -1,6 +1,6 @@
 # STUDENTS HUB
 
-A place where school students can communicate, ask and answer questions
+A place where school students can communicate, ask and answer each other's questions
 
 ## Getting Started
 
@@ -59,10 +59,12 @@ I saw that finance project is well structured so I implemented my project on it
 ```
 wget [URL]
 ```
+## Explaination youtube video
+* [Students Hub](https://flask-doc.readthedocs.io/en/latest/) - Students hub video
 
 ## Built With
 
-* [Flask](https://flask-doc.readthedocs.io/en/latest/) - The web framework used
+* [Flask](https://www.youtube.com/watch?v=A57qybi5ODo) - The web framework used
 * [SQLite](https://www.sqlite.org) - Database Management
 * [Bootstrap](https://getbootstrap.com/) - Used to layout and style the project
 
