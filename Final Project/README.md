@@ -1,6 +1,6 @@
 # STUDENTS HUB
 
-A place where school students can communicate, ask and answer questions
+A place where school students can communicate, ask and answer each other's questions
 
 ## Getting Started
 
@@ -59,6 +59,8 @@ I saw that finance project is well structured so I implemented my project on it
 ```
 wget [URL]
 ```
+## Explaination youtube video
+* [Students Hub](https://www.youtube.com/watch?v=A57qybi5ODo) - Students hub video
 
 ## Built With
 
